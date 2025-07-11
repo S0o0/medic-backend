@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
-import { RendezVous } from "./RendezVous"
+import { RendezVous } from "./RendezVous"; // import *type-only* pour casser le cycle
 
 @Entity("users")
 export class User {
