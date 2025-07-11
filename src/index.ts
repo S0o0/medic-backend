@@ -6,6 +6,7 @@ import { config } from 'dotenv';
 import { AppDataSource } from './datasource';
 import { loginRoute } from './routes/loginRoute';
 import { registerRoute } from './routes/registerRoute';
+import { addRdvRoute } from "./routes/addRdvRoute";
 
 // Charger les variables d'environnement (.env)
 config();
@@ -30,6 +31,10 @@ app.get('/ping', (c) => c.text('pong'));
 // Routes d'authentification
 app.route('/login', loginRoute);
 app.route('/register', registerRoute);
+
+// Routes propres au projet
+app.route("/add_rdv", addRdvRoute);
+
 
 // Démarrage du serveur
 const port = parseInt(process.env.PORT || '4000', 10);
