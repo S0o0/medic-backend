@@ -26,11 +26,11 @@ addRdvRoute.post("/", async (c) => {
         return c.json({ error: "Champs manquants" }, 400);
     }
 
-    const doctor = await AppDataSource.getRepository(User).findOneBy({ users_id: doctor_id });
+    const doctor = await AppDataSource.getRepository(User).findOne({
+        where: { users_id: doctor_id },
+    });
 
-    if (!doctor) {
-        return c.json({ error: "Médecin introuvable" }, 404);
-    }
+    if (!doctor) return c.json({ error: "Médecin introuvable" }, 404);
 
     const rdvRepo = AppDataSource.getRepository(RendezVous);
 
