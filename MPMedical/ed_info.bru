@@ -1,0 +1,22 @@
+meta {
+  name: ed_info
+  type: http
+  seq: 9
+}
+
+put {
+  url: http://localhost:4000/ed_info/2
+  body: json
+  auth: inherit
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "title": "Titre mis à jour",
+    "description": "Description mise à jour concernant la santé..."
+  }
+}

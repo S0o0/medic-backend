@@ -1,0 +1,25 @@
+meta {
+  name: ed_doc
+  type: http
+  seq: 8
+}
+
+put {
+  url: http://localhost:4000/ed_doc/4
+  body: json
+  auth: inherit
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "username": "nouveauNom",
+    "email": "nouveau.email@example.com",
+    "password": "nouveauMotDePasse",  // selon ta logique, le backend devra hasher
+    "speciality": "cardiologue",
+    "adress": "123 rue Exemple"
+  }
+}

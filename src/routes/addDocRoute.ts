@@ -1,6 +1,7 @@
 import { Hono } from "hono";
 import { AppDataSource } from "../datasource";
 import { User } from "../entity/User";
+import bcrypt from "bcryptjs";
 
 export const addDocRoute = new Hono();
 
@@ -18,7 +19,17 @@ addDocRoute.post("/", async (c) => {
         return c.json({ error: "Utilisateur déjà existant" }, 409);
     }
 
-    const newUser = userRepo.create({ username, email, password, speciality, adress });
+    // Hachage du mot de passe avant la sauvegarde
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const newUser = userRepo.create({ 
+        username, 
+        email, 
+        password: hashedPassword,  // stocke le hash ici
+        speciality, 
+        adress 
+    });
+
     await userRepo.save(newUser);
 
     return c.json(newUser);

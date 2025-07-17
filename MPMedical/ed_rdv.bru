@@ -1,0 +1,27 @@
+meta {
+  name: ed_rdv
+  type: http
+  seq: 10
+}
+
+put {
+  url: http://localhost:4000/ed_rdv/6
+  body: json
+  auth: inherit
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "patient_nom": "Banouh",
+    "patient_prenom": "Jean",
+    "patient_tel": "0612345678",
+    "num_secu": "123456789012345",
+    "doctor_id": 1,
+    "date": "2025-08-01T14:30:00Z"
+  }
+  
+}

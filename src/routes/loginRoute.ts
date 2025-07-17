@@ -8,17 +8,21 @@ export const loginRoute = new Hono();
 
 loginRoute.post("/", async (c) => {
     try {
-        const { email, password } = await c.req.json();
+        const { username, password } = await c.req.json(); // email ou username
 
-        if (!email || !password) {
-            return c.text("Email et mot de passe requis", 400);
+        if (!username || !password) {
+            return c.text("Identifiant et mot de passe requis", 400);
         }
 
         const userRepo = AppDataSource.getRepository(User);
-        const user = await userRepo.findOne({ where: { email } });
+
+        const user = await userRepo
+            .createQueryBuilder("user")
+            .where("user.email = :username OR user.username = :username", { username })
+            .getOne();
 
         if (!user) {
-            return c.text("Email incorrect", 401);
+            return c.text("Utilisateur non trouvé", 401);
         }
 
         const match = await bcrypt.compare(password, user.password);
