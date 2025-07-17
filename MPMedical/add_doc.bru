@@ -1,0 +1,21 @@
+meta {
+  name: add_doc
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:4000/add_doc
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "username": "drhouse",
+    "email": "house@example.com",
+    "password": "mdpfort",
+    "speciality": "diagnostic",
+    "adress": "123 rue médicale"
+  }
+}

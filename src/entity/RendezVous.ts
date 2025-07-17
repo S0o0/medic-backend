@@ -13,10 +13,19 @@ export class RendezVous {
     id!: number;
 
     @Column()
-    date!: Date;
+    patient_nom!: string;
 
     @Column()
+    patient_prenom!: string;
+
+    @Column({ length: 10 })
+    patient_tel!: string;
+
+    @Column({ length: 15 })
     num_secu!: string;
+
+    @Column()
+    date!: Date;
 
     @ManyToOne(
         () => require("./User").User, // ✅ synchro

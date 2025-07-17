@@ -1,0 +1,22 @@
+meta {
+  name: add_rdv
+  type: http
+  seq: 4
+}
+
+post {
+  url: http://localhost:4000/add_rdv
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "patient_nom": "Dupont",
+    "patient_prenom": "Jean",
+    "patient_tel": "0612345678",
+    "num_secu": "123456789012345",
+    "doctor_id": 1,
+    "date": "2025-07-25T10:00:00Z"
+  }
+}
