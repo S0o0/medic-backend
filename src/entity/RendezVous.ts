@@ -1,27 +1,27 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from "typeorm";
-import { User } from "./User"; // import normal car ici on doit fournir la classe
+import {
+    Entity,
+    PrimaryGeneratedColumn,
+    Column,
+    ManyToOne,
+    JoinColumn,
+} from "typeorm";
+import type { User } from "./User";
 
-@Entity("rdv2")
+@Entity()
 export class RendezVous {
-    @PrimaryGeneratedColumn({ name: "rdv_id" })
+    @PrimaryGeneratedColumn()
     id!: number;
-
-    @Column()
-    patient_nom!: string;
-
-    @Column()
-    patient_prenom!: string;
-
-    @Column({ length: 10 })
-    patient_tel!: string;
-
-    @Column({ length: 15 })
-    num_secu!: string;
 
     @Column()
     date!: Date;
 
-    @ManyToOne(() => User, (user) => user.rendezvous)
+    @Column()
+    num_secu!: string;
+
+    @ManyToOne(
+        () => require("./User").User, // ✅ synchro
+        (user: User) => user.rendezvous
+    )
     @JoinColumn({ name: "doctor_id" })
     doctor!: User;
 }
