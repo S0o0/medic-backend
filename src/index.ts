@@ -6,7 +6,6 @@ import { config } from 'dotenv';
 import { AppDataSource } from './datasource';
 
 import { loginRoute } from './routes/loginRoute';
-import { registerRoute } from './routes/registerRoute';
 
 import { addDocRoute } from "./routes/addDocRoute";
 import { delDocRoute } from "./routes/delDocRoute";
@@ -42,7 +41,6 @@ app.get('/ping', (c) => c.text('pong'));
 
 // Routes d'authentification
 app.route('/login', loginRoute);
-app.route('/register', registerRoute);
 
 // Routes BDD
 // Médecins
