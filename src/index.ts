@@ -19,6 +19,10 @@ import { addRdvRoute } from "./routes/addRdvRoute";
 import { delRdvRoute } from "./routes/delRdvRoute";
 import { edRdvRoute } from "./routes/edRdvRoute";
 
+import { getDocsRoute } from "./routes/getDocsRoute";
+
+
+
 // Charger les variables d'environnement (.env)
 config();
 
@@ -47,6 +51,7 @@ app.route('/login', loginRoute);
 app.route("/add_doc", addDocRoute);
 app.route("/del_doc", delDocRoute);
 app.route("/ed_doc", edDocRoute);
+app.route("/get_docs", getDocsRoute);
 
 // Infos
 app.route("/add_info", addInfoRoute);
@@ -57,6 +62,8 @@ app.route("/ed_info", edInfoRoute);
 app.route("/add_rdv", addRdvRoute);
 app.route("/del_rdv", delRdvRoute);
 app.route("/ed_rdv", edRdvRoute);
+
+
 
 // Démarrage du serveur
 const port = parseInt(process.env.PORT || '4000', 10);
